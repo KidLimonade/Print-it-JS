@@ -54,15 +54,12 @@ function displayDots() {
     dots.innerHTML = '';
     
     for(i = 0; i < slides.length; i++) {
-        if (currentSlide === i) {
-            
+        if (currentSlide === i)
             // Current image with full dot
             dots.innerHTML += '<div class="dot dot_selected"></div>';
-        } else {
-            
+        else
             // Carousel image with empty dot
             dots.innerHTML += '<div class="dot"></div>';
-        }
     }
 }
 
@@ -76,16 +73,16 @@ function displayDots() {
 */
 const previous_button = document.querySelector("#banner .arrow_left");
 previous_button.addEventListener("click", () => {
-    if (currentSlide > 0) { currentSlide--; } 
-    else { currentSlide = slides.length - 1; }
+    if (currentSlide > 0) currentSlide--;
+    else currentSlide = slides.length - 1;
     displaySlide();
     displayDots();
 })
 
 const next_button = document.querySelector("#banner .arrow_right");
 next_button.addEventListener("click", () => {
-    if (currentSlide < slides.length - 1) { currentSlide++; } 
-    else { currentSlide = 0; }
+    if (currentSlide < slides.length - 1) currentSlide++;
+    else currentSlide = 0;
     displaySlide();
     displayDots();
 })
