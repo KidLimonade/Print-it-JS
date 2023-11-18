@@ -81,7 +81,7 @@ previous_button.addEventListener("click", () => {
 
 const next_button = document.querySelector("#banner .arrow_right")
 next_button.addEventListener("click", () => {
-    if (current_slide < slides.length) { current_slide++ } 
+    if (current_slide < slides.length - 1) { current_slide++ } 
     else { current_slide = 0 }
     display_slide()
     display_dots()
