@@ -21,9 +21,6 @@ const slides = [
     }
 ]
 
-// Index of the current slide
-let currentSlide = 0;
-
 /*========================================================
     Internal functions
 ========================================================*/
@@ -32,14 +29,14 @@ let currentSlide = 0;
 * Display the bullet of current image among the full
 * list of carousel images designed with empty bullets
 */
-function displayDots() {
+function displayDots(index, nbDots) {
     const dots = document.querySelector("#banner .dots");
 
     // Reset HTML content of the dots <div>
     dots.innerHTML = '';
     
-    for (let i = 0; i < slides.length; i++) {
-        if (currentSlide === i)
+    for (let i = 0; i < nbDots; i++) {
+        if (index === i)
             // Current image with full dot
             dots.innerHTML += '<div class="dot dot_selected"></div>';
         else
@@ -52,23 +49,26 @@ function displayDots() {
 * Display image and tag line according to the current
 * index in the carousel. Then readjust bullet points.
 */
-function displaySlide() {
+function displaySlide(index) {
     
     // Display image
     const image = document.querySelector("#banner .banner-img");
-    image.src = `./assets/images/slideshow/${slides[currentSlide].image}`;
+    image.src = `./assets/images/slideshow/${slides[index].image}`;
     
     // Display title
     const title = document.querySelector("#banner p");
-    title.innerHTML = slides[currentSlide].tagLine;
+    title.innerHTML = slides[index].tagLine;
 
     // Adjust bullet points
-    displayDots();
+    displayDots(index, slides.length);
 }
 
 /*========================================================
     Run at first launch
 ========================================================*/
+
+// Index of the current slide
+let currentSlide = 0;
 
 /**
 * Change carousel left and right arrows into previous
@@ -78,16 +78,17 @@ const previous_button = document.querySelector("#banner .arrow_left");
 previous_button.addEventListener("click", () => {
     if (currentSlide > 0) currentSlide--;
     else currentSlide = slides.length - 1;
-    displaySlide();
+    displaySlide(currentSlide);
 })
 
 const next_button = document.querySelector("#banner .arrow_right");
 next_button.addEventListener("click", () => {
     if (currentSlide < slides.length - 1) currentSlide++;
     else currentSlide = 0;
-    displaySlide();
+    displaySlide(currentSlide);
 })
 
 // Add missing bullet points on pre-existing carousel image
-displayDots();
+displayDots(currentSlide, slides.length);
+
 
