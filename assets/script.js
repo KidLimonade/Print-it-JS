@@ -29,21 +29,6 @@ let currentSlide = 0;
 ========================================================*/
 
 /**
-* Display image and tag line according to
-* the current index in the carousel 
-*/
-function displaySlide() {
-    
-    // Display image
-    const image = document.querySelector("#banner .banner-img");
-    image.src = `./assets/images/slideshow/${slides[currentSlide].image}`;
-    
-    // Display title
-    const title = document.querySelector("#banner p");
-    title.innerHTML = slides[currentSlide].tagLine;
-}
-
-/**
 * Display the bullet of current image among the full
 * list of carousel images designed with empty bullets
 */
@@ -63,6 +48,24 @@ function displayDots() {
     }
 }
 
+/**
+* Display image and tag line according to the current
+* index in the carousel. Then readjust bullet points.
+*/
+function displaySlide() {
+    
+    // Display image
+    const image = document.querySelector("#banner .banner-img");
+    image.src = `./assets/images/slideshow/${slides[currentSlide].image}`;
+    
+    // Display title
+    const title = document.querySelector("#banner p");
+    title.innerHTML = slides[currentSlide].tagLine;
+
+    // Adjust bullet points
+    displayDots();
+}
+
 /*========================================================
     Run at first launch
 ========================================================*/
@@ -76,7 +79,6 @@ previous_button.addEventListener("click", () => {
     if (currentSlide > 0) currentSlide--;
     else currentSlide = slides.length - 1;
     displaySlide();
-    displayDots();
 })
 
 const next_button = document.querySelector("#banner .arrow_right");
@@ -84,7 +86,6 @@ next_button.addEventListener("click", () => {
     if (currentSlide < slides.length - 1) currentSlide++;
     else currentSlide = 0;
     displaySlide();
-    displayDots();
 })
 
 // Add missing bullet points on pre-existing carousel image
