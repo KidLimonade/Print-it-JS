@@ -22,7 +22,7 @@ const slides = [
 ]
 
 // index of the current slide
-let current_slide = 0;
+let currentSlide = 0;
 
 /*========================================================
     Internal functions
@@ -32,26 +32,26 @@ let current_slide = 0;
 * Display image and tag line according to
 * the current index in the carousel 
 */
-function display_slide() {
+function displaySlide() {
     
     // Display image
     const image = document.querySelector("#banner .banner-img");
-    image.src = `./assets/images/slideshow/${slides[current_slide].image}`;
+    image.src = `./assets/images/slideshow/${slides[currentSlide].image}`;
     
     // Display title
     const title = document.querySelector("#banner p");
-    title.innerHTML = slides[current_slide].tagLine;
+    title.innerHTML = slides[currentSlide].tagLine;
 }
 
 /**
 * Display the bullet of current image among the full
 * list of carousel images designed with empty bullets
 */
-function display_dots() {
+function displayDots() {
     const dots = document.querySelector(".dots");
     dots.innerHTML = '';
     for(i = 0; i < slides.length; i++) {
-        if (current_slide === i) {
+        if (currentSlide === i) {
             
             // current image with full dot
             dots.innerHTML += '<div class="dot dot_selected"></div>';
@@ -73,20 +73,20 @@ function display_dots() {
 */
 const previous_button = document.querySelector("#banner .arrow_left");
 previous_button.addEventListener("click", () => {
-    if (current_slide > 0) { current_slide--; } 
-    else { current_slide = slides.length - 1; }
-    display_slide();
-    display_dots();
+    if (currentSlide > 0) { currentSlide--; } 
+    else { currentSlide = slides.length - 1; }
+    displaySlide();
+    displayDots();
 })
 
 const next_button = document.querySelector("#banner .arrow_right");
 next_button.addEventListener("click", () => {
-    if (current_slide < slides.length - 1) { current_slide++; } 
-    else { current_slide = 0; }
-    display_slide();
-    display_dots();
+    if (currentSlide < slides.length - 1) { currentSlide++; } 
+    else { currentSlide = 0; }
+    displaySlide();
+    displayDots();
 })
 
 // Add missing bullet points on pre-existing carousel image
-display_dots();
+displayDots();
 
