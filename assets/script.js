@@ -53,7 +53,7 @@ function displayDots() {
     // Reset HTML content of the dots <div>
     dots.innerHTML = '';
     
-    for(i = 0; i < slides.length; i++) {
+    for(let i = 0; i < slides.length; i++) {
         if (currentSlide === i)
             // Current image with full dot
             dots.innerHTML += '<div class="dot dot_selected"></div>';
