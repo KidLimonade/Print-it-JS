@@ -21,7 +21,7 @@ const slides = [
     }
 ]
 
-// index of the current slide
+// Index of the current slide
 let currentSlide = 0;
 
 /*========================================================
@@ -49,15 +49,18 @@ function displaySlide() {
 */
 function displayDots() {
     const dots = document.querySelector(".dots");
+
+    // Reset HTML content of the dots <div>
     dots.innerHTML = '';
+    
     for(i = 0; i < slides.length; i++) {
         if (currentSlide === i) {
             
-            // current image with full dot
+            // Current image with full dot
             dots.innerHTML += '<div class="dot dot_selected"></div>';
         } else {
             
-            // carousel image with empty dot
+            // Carousel image with empty dot
             dots.innerHTML += '<div class="dot"></div>';
         }
     }
