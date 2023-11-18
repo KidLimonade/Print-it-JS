@@ -1,5 +1,5 @@
 /*========================================================
-    Data model
+Data model
 ========================================================*/
 
 const slides = [
@@ -22,7 +22,7 @@ const slides = [
 ]
 
 /*========================================================
-    Internal functions
+Internal functions
 ========================================================*/
 
 /**
@@ -31,17 +31,17 @@ const slides = [
 */
 function displayDots(index, nbDots) {
     const dots = document.querySelector("#banner .dots");
-
+    
     // Reset HTML content of the dots <div>
     dots.innerHTML = '';
     
     for (let i = 0; i < nbDots; i++) {
         if (index === i)
-            // Current image with full dot
-            dots.innerHTML += '<div class="dot dot_selected"></div>';
+        // Current image with full dot
+        dots.innerHTML += '<div class="dot dot_selected"></div>';
         else
-            // Carousel image with empty dot
-            dots.innerHTML += '<div class="dot"></div>';
+        // Carousel image with empty dot
+        dots.innerHTML += '<div class="dot"></div>';
     }
 }
 
@@ -58,13 +58,13 @@ function displaySlide(index) {
     // Display title
     const title = document.querySelector("#banner p");
     title.innerHTML = slides[index].tagLine;
-
+    
     // Adjust bullet points
     displayDots(index, slides.length);
 }
 
 /*========================================================
-    Run at first launch
+Run at first launch
 ========================================================*/
 
 // Index of the current slide
