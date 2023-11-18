@@ -48,7 +48,7 @@ function displaySlide() {
 * list of carousel images designed with empty bullets
 */
 function displayDots() {
-    const dots = document.querySelector(".dots");
+    const dots = document.querySelector("#banner .dots");
 
     // Reset HTML content of the dots <div>
     dots.innerHTML = '';
