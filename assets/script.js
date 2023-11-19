@@ -1,5 +1,7 @@
 /*========================================================
-Data model
+
+    Data model
+
 ========================================================*/
 
 const slides = [
@@ -22,7 +24,9 @@ const slides = [
 ]
 
 /*========================================================
-Internal functions
+
+    Internal functions
+
 ========================================================*/
 
 /**
@@ -34,11 +38,10 @@ function showDots(index, nbDots) {
     
     // Reset HTML content of the dots <div>
     dots.innerHTML = '';
-    let classes = '';
     
     for (let i = 0; i < nbDots; i++) {
-        if (index === i) classes = 'dot dot_selected';
-        else classes = 'dot';
+        let classes = 'dot';
+        if (index === i) classes += ' dot_selected';
         dots.innerHTML += `<div class="${classes}"></div>`;
     }
 }
@@ -62,7 +65,9 @@ function showBanner(index, banners) {
 }
 
 /*========================================================
-Run at first launch
+
+    Run at first launch
+
 ========================================================*/
 
 // Index of the current slide
@@ -72,15 +77,15 @@ let currentSlide = 0;
 * Change carousel left and right arrows into previous
 * and next buttons adding click event listeners 
 */
-const previous_button = document.querySelector("#banner .arrow_left");
-previous_button.addEventListener("click", () => {
+const previousBtn = document.querySelector("#banner .arrow_left");
+previousBtn.addEventListener("click", () => {
     if (currentSlide > 0) currentSlide--;
     else currentSlide = slides.length - 1;
     showBanner(currentSlide, slides);
 })
 
-const next_button = document.querySelector("#banner .arrow_right");
-next_button.addEventListener("click", () => {
+const nextBtn = document.querySelector("#banner .arrow_right");
+nextBtn.addEventListener("click", () => {
     if (currentSlide < slides.length - 1) currentSlide++;
     else currentSlide = 0;
     showBanner(currentSlide, slides);
@@ -88,5 +93,3 @@ next_button.addEventListener("click", () => {
 
 // Add missing bullet points on pre-existing carousel image
 showDots(currentSlide, slides.length);
-
-
